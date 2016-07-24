@@ -23,7 +23,7 @@ class HtmlImageMaker():
         for image in self._imageNames:
             self._outFile.write('<div class="floated_img">\n')
             self._outFile.write('\t<img src="'+image+'" alt="alphaT">\n')
-            #self._outFile.write('\t<p><p>\n')
+            self._outFile.write('\t<p>'+image+'<p>\n')
             self._outFile.write('</div>\n')
         pass
 
