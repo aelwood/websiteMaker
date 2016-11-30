@@ -21,10 +21,16 @@ class HtmlImageMaker():
     def addImages(self):
 
         for image in self._imageNames:
-            self._outFile.write('<div class="floated_img">\n')
-            self._outFile.write('\t<img src="'+image+'" alt="alphaT">\n')
-            self._outFile.write('\t<p>'+image+'<p>\n')
-            self._outFile.write('</div>\n')
+            # self._outFile.write('<div class="floated_img">\n')
+            # self._outFile.write('\t<img src="'+image+'" alt="alphaT">\n')
+            # self._outFile.write('\t<p>'+image+'<p>\n')
+            # self._outFile.write('</div>\n')
+
+            self._outFile.write('<a href="'+image+'">\n')
+            self._outFile.write('\t<img width="400px" src="'+image+'"/>\n')
+            #self._outFile.write('\t<p>'+image+'<p>\n')
+            self._outFile.write('</a>\b')
+
         pass
 
     def appendImage(self,image):
@@ -60,7 +66,7 @@ if __name__=='__main__':
 
     for dirPath,dirNames,fileNames in os.walk(opt.inputDir):
         if len(fileNames)==0: continue
-        htmlImageMaker = HtmlImageMaker(os.path.join(dirPath,'images.html'))
+        htmlImageMaker = HtmlImageMaker(os.path.join(dirPath,'index.html'))
         for image in glob.glob(os.path.join(dirPath,'*.'+opt.imageType)): 
             htmlImageMaker.appendImage(image.split('/')[-1])
         htmlImageMaker.makeHtmlFile()
